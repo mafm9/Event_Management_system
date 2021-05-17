@@ -1,0 +1,19 @@
+{
+    "events": [
+        {
+            "date_of_event": "05-15-2021",
+            "name": "Miguel Medrano",
+            "type_of_event": "Birthday"
+        },
+        {
+            "date_of_event": "02-02-2021",
+            "name": "Cristian Medrano",
+            "type_of_event": "Birthday"
+        },
+        {
+            "date_of_event": "05-15-2021",
+            "name": "Miguel Medrano",
+            "type_of_event": "Graduation"
+        }
+    ]
+}
