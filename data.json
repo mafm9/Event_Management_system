@@ -1,27 +1,12 @@
 {
     "events": [
         {
-            "date_of_event": "05-15-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Birthday"
-        },
-        {
             "date_of_event": "02-02-2021",
             "name": "Cristian Medrano",
             "type_of_event": "Birthday"
         },
         {
-            "date_of_event": "05-15-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Graduation"
-        },
-        {
             "date_of_event": "05-18-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "05-19-2021",
             "name": "Miguel Medrano",
             "type_of_event": "Celebration"
         },
@@ -37,11 +22,6 @@
         },
         {
             "date_of_event": "02-29-2020",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "06-16-2021",
             "name": "Miguel Medrano",
             "type_of_event": "Celebration"
         }

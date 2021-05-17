@@ -1,6 +1,7 @@
 import json
 import datetime as dt
 import os
+import random
 
 
 class event:
@@ -10,7 +11,10 @@ class event:
         self.event_type = event_type
 
     def __str__(self) -> str:
-        return f"date_of_event: {self.date_of_event}\nname: {self.name}\nevent type: {self.event_type}\n"
+        return f"date_of_event: {self.date_of_event}\n" \
+            f"name: {self.name}\n" \
+            f"event type: {self.event_type}\n" \
+            f"gift idea: {gift(self.event_type)}\n"
 
     @staticmethod
     def new_event_dict() -> dict:
@@ -34,7 +38,7 @@ class event:
         return event(name, date_of_event, type_of_event)
 
 
-def validate_date(event_date):
+def validate_date(event_date) -> bool:
     try:
         dt.datetime.strptime(event_date, "%m-%d-%Y")
         return True
@@ -42,19 +46,19 @@ def validate_date(event_date):
         return False
 
 
-def add() -> None:
+def add():
     storage = {}
-    add = event.new_event_dict()
+    new_entry = event.new_event_dict()
     if os.path.getsize('data.json') != 0:
         with open('data.json', 'r+') as outfile:
             hold = json.load(outfile)
-            hold['events'].append(add)
+            hold['events'].append(new_entry)
             outfile.seek(0)
             json.dump(hold, outfile, indent=4)
     else:
         with open('data.json', 'w') as outfile:
             storage["events"] = []
-            storage['events'].append(add)
+            storage['events'].append(new_entry)
             json.dump(storage, outfile, indent=4)
 
 
@@ -109,17 +113,17 @@ def delete():
 
 
 def name_search():
-    name = input("Please enter name you're looking for: ")
+    name = input("Please enter name you're looking for: ").title()
     with open("data.json", "r") as file:
         data = json.load(file)
     for item in data['events']:
         temp = event(item['name'], item['date_of_event'], item['type_of_event'])
-        if item['name'] == name:
+        if name in item['name']:
             print(temp)
 
 
 def event_search():
-    event_type = input("Please enter name you're looking for: ")
+    event_type = input("Please enter event you're looking for: ").capitalize()
     with open("data.json", "r") as file:
         data = json.load(file)
     for item in data['events']:
@@ -161,18 +165,12 @@ def notification():
         for item in notifications:
             print(item)
 
-def cleanup():
-    today = dt.datetime.now().date()
-    deletion = []
-    with open("data.json", "r") as file:
-        data = json.load(file)
-    for item in data['events']:
-        temp = event(item['name'], item['date_of_event'], item['type_of_event'])
-        event_date = dt.datetime.strptime(item['date_of_event'], "%m-%d-%Y").date()
-        days_away = (event_date - today).days
-        if 0 < days_away <= 2:
-            deletion.append(temp)
 
+def gift(type_of_event):
+    with open("gift.json", "r") as file:
+        gifts = json.load(file)
+        if type_of_event not in gifts:
+            type_of_event = "Misc"
 
-def gift(self, e):
-    pass
+        return random.choice(gifts[type_of_event])
+

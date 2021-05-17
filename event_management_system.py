@@ -1,6 +1,6 @@
-import os.path
 
 import event
+
 
 
 def options() -> None:
