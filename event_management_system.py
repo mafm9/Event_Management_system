@@ -1,7 +1,5 @@
-
 import event
-
-
+from os import system,name
 
 def options() -> None:
     print("1. add a new event")
@@ -15,8 +13,15 @@ def options() -> None:
 
 def enter() -> None:
     input("Press enter to continue")
+def clear():
+    if name == 'nt':
+        _ = system('cls')
+    else:
+        _ = system('clear')
 
 
+print("Welcome to the event management system")
+enter()
 event.notification()
 x = ""
 while x != "7":
@@ -45,3 +50,4 @@ while x != "7":
     if x == "6":
         event.upcoming()
         enter()
+    clear()

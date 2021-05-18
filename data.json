@@ -24,6 +24,21 @@
             "date_of_event": "02-29-2020",
             "name": "Miguel Medrano",
             "type_of_event": "Celebration"
+        },
+        {
+            "date_of_event": "05-15-2021",
+            "name": "Miguel Medrano",
+            "type_of_event": "Birthday"
+        },
+        {
+            "date_of_event": "05-15-2022",
+            "name": "Miguel Medrano",
+            "type_of_event": "Birthday"
+        },
+        {
+            "date_of_event": "05-15-2022",
+            "name": "Miguel Medrano",
+            "type_of_event": "Birthday"
         }
     ]
 }

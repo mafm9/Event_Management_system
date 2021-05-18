@@ -16,8 +16,8 @@ class event:
             f"event type: {self.event_type}\n" \
             f"gift idea: {gift(self.event_type)}\n"
 
-    @staticmethod
-    def new_event_dict() -> dict:
+
+def new_event_dict() -> dict:
         date_of_event = input("please enter date of event: ")
         while not validate_date(date_of_event):
             date_of_event = input("Date format incorrect please input date as MM-DD-YYYY: ")
@@ -28,14 +28,14 @@ class event:
                 "type_of_event": event_type
                 }
 
-    @staticmethod
-    def new_event_obj():
-        date_of_event = input("please enter date of event: ")
-        while not validate_date(date_of_event):
-            date_of_event = input("Date format incorrect please input date as MM-DD-YYYY: ")
-        name = input("Please enter who's event it is: ")
-        type_of_event = input("Please enter what the event is: ")
-        return event(name, date_of_event, type_of_event)
+   
+def new_event_obj():
+    date_of_event = input("please enter date of event: ")
+    while not validate_date(date_of_event):
+        date_of_event = input("Date format incorrect please input date as MM-DD-YYYY: ")
+    name = input("Please enter who's event it is: ")
+    type_of_event = input("Please enter what the event is: ")
+    return event(name, date_of_event, type_of_event)
 
 
 def validate_date(event_date) -> bool:
@@ -48,7 +48,7 @@ def validate_date(event_date) -> bool:
 
 def add():
     storage = {}
-    new_entry = event.new_event_dict()
+    new_entry = new_event_dict()
     if os.path.getsize('data.json') != 0:
         with open('data.json', 'r+') as outfile:
             hold = json.load(outfile)
@@ -63,7 +63,7 @@ def add():
 
 
 def edit():
-    hold = event.new_event_obj()
+    hold = new_event_obj()
     with open("data.json", 'r+') as file:
         data = json.load(file)
         print("1.change date")
@@ -100,7 +100,7 @@ def edit():
 
 
 def delete():
-    hold = event.new_event_obj()
+    hold = new_event_obj()
     with open("data.json", 'r') as file:
         data = json.load(file)
     for index, item in enumerate(data['events']):
