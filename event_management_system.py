@@ -1,5 +1,6 @@
 import event
-from os import system,name
+from os import system,name,path
+
 
 def options() -> None:
     print("1. add a new event")
@@ -13,6 +14,8 @@ def options() -> None:
 
 def enter() -> None:
     input("Press enter to continue")
+
+
 def clear():
     if name == 'nt':
         _ = system('cls')
@@ -20,6 +23,8 @@ def clear():
         _ = system('clear')
 
 
+if not path.exists('data.json'):
+    open('data.json', "w")
 print("Welcome to the event management system")
 enter()
 event.notification()

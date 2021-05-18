@@ -12,23 +12,23 @@ class event:
 
     def __str__(self) -> str:
         return f"date_of_event: {self.date_of_event}\n" \
-            f"name: {self.name}\n" \
-            f"event type: {self.event_type}\n" \
-            f"gift idea: {gift(self.event_type)}\n"
+               f"name: {self.name}\n" \
+               f"event: {self.event_type}\n" \
+               f"gift idea: {gift(self.event_type)}\n"
 
 
 def new_event_dict() -> dict:
-        date_of_event = input("please enter date of event: ")
-        while not validate_date(date_of_event):
-            date_of_event = input("Date format incorrect please input date as MM-DD-YYYY: ")
-        name = input("Please enter who's event it is: ").title()
-        event_type = input("Please enter what the event is: ").capitalize()
-        return {"date_of_event": date_of_event,
-                "name": name,
-                "type_of_event": event_type
-                }
+    date_of_event = input("please enter date of event: ")
+    while not validate_date(date_of_event):
+        date_of_event = input("Date format incorrect please input date as MM-DD-YYYY: ")
+    name = input("Please enter who's event it is: ").title()
+    event_type = input("Please enter what the event is: ").capitalize()
+    return {"date_of_event": date_of_event,
+            "name": name,
+            "type_of_event": event_type
+            }
 
-   
+
 def new_event_obj():
     date_of_event = input("please enter date of event: ")
     while not validate_date(date_of_event):
@@ -49,6 +49,8 @@ def validate_date(event_date) -> bool:
 def add():
     storage = {}
     new_entry = new_event_dict()
+    if not os.path.exists('data.json'):
+        open('data.json', 'w')
     if os.path.getsize('data.json') != 0:
         with open('data.json', 'r+') as outfile:
             hold = json.load(outfile)
@@ -152,18 +154,23 @@ def upcoming():
 def notification():
     today = dt.datetime.now().date()
     notifications = []
-    with open("data.json", "r") as file:
-        data = json.load(file)
-    for item in data['events']:
-        temp = event(item['name'], item['date_of_event'], item['type_of_event'])
-        event_date = dt.datetime.strptime(item['date_of_event'], "%m-%d-%Y").date()
-        days_away = (event_date - today).days
-        if 0 < days_away <= 2:
-            notifications.append(temp)
-    if notifications:
-        print("The following events are coming up soon:")
-        for item in notifications:
-            print(item)
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+        for item in data['events']:
+            temp = event(item['name'], item['date_of_event'], item['type_of_event'])
+            event_date = dt.datetime.strptime(item['date_of_event'], "%m-%d-%Y").date()
+            days_away = (event_date - today).days
+            if 0 < days_away <= 2:
+                notifications.append(temp)
+        if notifications:
+            print("The following events are coming up soon:")
+            for item in notifications:
+                print(item)
+    except FileNotFoundError:
+        pass
+    except json.decoder.JSONDecodeError:
+        pass
 
 
 def gift(type_of_event):
@@ -173,4 +180,3 @@ def gift(type_of_event):
             type_of_event = "Misc"
 
         return random.choice(gifts[type_of_event])
-

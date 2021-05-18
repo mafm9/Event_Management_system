@@ -1,43 +1,8 @@
 {
     "events": [
         {
-            "date_of_event": "02-02-2021",
-            "name": "Cristian Medrano",
-            "type_of_event": "Birthday"
-        },
-        {
-            "date_of_event": "05-18-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "05-20-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "05-22-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "02-29-2020",
-            "name": "Miguel Medrano",
-            "type_of_event": "Celebration"
-        },
-        {
-            "date_of_event": "05-15-2021",
-            "name": "Miguel Medrano",
-            "type_of_event": "Birthday"
-        },
-        {
-            "date_of_event": "05-15-2022",
-            "name": "Miguel Medrano",
-            "type_of_event": "Birthday"
-        },
-        {
-            "date_of_event": "05-15-2022",
-            "name": "Miguel Medrano",
+            "date_of_event": "05-15-1997",
+            "name": "Miguel",
             "type_of_event": "Birthday"
         }
     ]
