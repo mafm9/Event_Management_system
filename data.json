@@ -1,9 +1,9 @@
 {
     "events": [
         {
-            "date_of_event": "05-15-1997",
+            "eventDate": "05-15-1997",
             "name": "Miguel",
-            "type_of_event": "Birthday"
+            "eventType": "Birthday"
         }
     ]
 }

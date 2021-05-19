@@ -26,8 +26,8 @@ def clear():
 if not path.exists('data.json'):
     open('data.json', "w")
 print("Welcome to the event management system")
-enter()
-event.notification()
+#enter()
+#event.notification()
 x = ""
 while x != "7":
     options()
