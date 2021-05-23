@@ -1,5 +1,5 @@
 import event
-from os import system,name,path
+from os import system, name, path
 
 
 def options() -> None:
@@ -23,36 +23,45 @@ def clear():
         _ = system('clear')
 
 
+def choice() -> int:
+    try:
+        return int(input("Please select an option "))
+    except ValueError:
+        print("Please enter valid Integer.")
+        return choice()
+
+
 if not path.exists('data.json'):
-    open('data.json', "w")
+    file = open('data.json', "w")
+    file.close()
 print("Welcome to the event management system")
-#enter()
-#event.notification()
-x = ""
-while x != "7":
+enter()
+event.notification()
+x = -1
+while x != 7:
     options()
-    x = input("Please select an option ")
-    if x == "1":
+    x = choice()
+    if x == 1:
         event.add()
         enter()
 
-    if x == "2":
+    if x == 2:
         event.edit()
         enter()
 
-    if x == "3":
+    if x == 3:
         event.delete()
         enter()
 
-    if x == "4":
+    if x == 4:
         event.name_search()
         enter()
 
-    if x == "5":
+    if x == 5:
         event.event_search()
         enter()
-    
-    if x == "6":
+
+    if x == 6:
         event.upcoming()
         enter()
     clear()
