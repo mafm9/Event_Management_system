@@ -31,9 +31,6 @@ def choice() -> int:
         return choice()
 
 
-if not path.exists('data.json'):
-    file = open('data.json', "w")
-    file.close()
 print("Welcome to the event management system")
 enter()
 event.notification()
